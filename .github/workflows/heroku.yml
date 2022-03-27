@@ -22,6 +22,6 @@ jobs:
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           args: deploy --dir=build --prod
-          heroku_api_key: ${{ secrets.HEROKU_GLOBEFENG_STORYBOOK_API_KEY }}
+          heroku_api_key: ${{ secrets.heroku_api_key }}
           heroku_app_name: 'globefeng-storybook'
           heroku_email: 'zglobefeng@yahoo.com'
