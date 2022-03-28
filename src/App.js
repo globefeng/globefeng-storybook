@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Homepage for Heroku deploy
+          Homepage for deploy from github to heroku
         </p>
         <a
           className="App-link"
