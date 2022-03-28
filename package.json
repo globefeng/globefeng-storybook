@@ -13,11 +13,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "build-storybook --output-dir public",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public --output-dir build"
+    "build-storybook": "build-storybook --output-dir public"
   },
   "eslintConfig": {
     "extends": [
