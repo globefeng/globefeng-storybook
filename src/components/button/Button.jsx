@@ -6,16 +6,22 @@ import './button.css';
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ primary, backgroundColor, size, label, onClick, ...props }) => {
+export const Button = ({ primary, backgroundColor, size, label, onClick, showIcon, ...props }) => {
+  const getSize = () => {
+    if (size === 'small') return 12;
+    else if (size === 'medium') return 14;    
+    return 16;
+  }
+
   return (
     <div
       role="button" tabIndex={0} onClick={onClick}
       type="button"
-      className={['storybook-button', `storybook-button--${size}`, primary ? 'storybook-button--primary' : 'storybook-button--secondary'].join(' ')}
+      className={['button', `button--${size}`, primary ? 'button--primary' : 'button--secondary'].join(' ')}
       style={backgroundColor && { backgroundColor }}
       {...props}
     >
-      <CircularProgress size={18} color="inherit" style={{marginRight: '20px'}} />
+      {showIcon && <CircularProgress className={`icon--${size}`} size={getSize()} color="inherit" style={{marginRight: '8px'}} />}
       {label}
     </div>
   );
@@ -26,6 +32,10 @@ Button.propTypes = {
    * Is this the principal call to action on the page?
    */
   primary: PropTypes.bool,
+    /**
+   * boolean to show/hide progress icon
+   */
+  showIcon: PropTypes.bool,
   /**
    * What background color to use
    */
@@ -47,6 +57,7 @@ Button.propTypes = {
 Button.defaultProps = {
   backgroundColor: null,
   primary: false,
+  showIcon: true,
   size: 'medium',
   onClick: undefined,
 };
