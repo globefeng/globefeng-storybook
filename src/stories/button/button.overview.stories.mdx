@@ -1,0 +1,149 @@
+import {
+  Description,
+  Meta,
+  Preview,
+  Props,
+  Story,
+  Title,
+} from '@storybook/addon-docs/blocks';
+
+import { Button } from '../../components/button/Button';
+
+export const previewArgs = {
+  showIcon: true,
+  label: 'Button',
+  backgroundColor: '#1976d2',
+  color: 'white',
+};
+
+<Meta
+  component={Button}
+  title="Component/Button"
+/>
+
+<Title>Button</Title>
+
+<Description>
+  The component will render a button on the page.
+</Description>
+
+## Properties
+
+<Props of={Button} />
+
+## Preview
+
+Here's an example of the Button display. Go to the Canvas tab for a live preview.
+
+<Canvas>
+  <Story name="Overview">
+    <div style={{display: "flex", marginBottom: "20px"}}>
+      <div style={{marginRight: "20px"}}>
+        <Button
+          label="Button"
+          showIcon={true}
+          backgroundColor="#1976d2"
+          size="large"
+        />
+      </div>
+      <div style={{marginRight: "20px"}}>
+        <Button
+          label="Button"
+          showIcon={true}
+          backgroundColor="#2e7d32"
+          size="large"
+        />
+      </div>
+      <div style={{marginRight: "20px"}}>
+        <Button
+          label="Button"
+          showIcon={true}
+          backgroundColor="#9c27b0"
+          size="large"
+        />
+      </div>
+      <div style={{marginRight: "20px"}}>
+        <Button
+          label="Button"
+          showIcon={true}
+          backgroundColor="#d32f2f"
+          size="large"
+        />
+      </div>
+    </div>
+    <div style={{display: "flex", marginBottom: "20px"}}>
+      <div style={{marginRight: "20px"}}>
+        <Button
+          label="Button"
+          showIcon={true}
+          backgroundColor="#1976d2"
+          size="medium"
+        />
+      </div>
+      <div style={{marginRight: "20px"}}>
+        <Button
+          label="Button"
+          showIcon={true}
+          backgroundColor="#2e7d32"
+          size="medium"
+        />
+      </div>
+      <div style={{marginRight: "20px"}}>
+        <Button
+          label="Button"
+          showIcon={true}
+          backgroundColor="#9c27b0"
+          size="medium"
+        />
+      </div>
+      <div style={{marginRight: "20px"}}>
+        <Button
+          label="Button"
+          showIcon={true}
+          backgroundColor="#d32f2f"
+          size="medium"
+        />
+      </div>
+    </div>
+        <div style={{display: "flex"}}>
+      <div style={{marginRight: "20px"}}>
+        <Button
+          label="Button"
+          showIcon={true}
+          backgroundColor="#1976d2"
+          size="small"
+        />
+      </div>
+      <div style={{marginRight: "20px"}}>
+        <Button
+          label="Button"
+          showIcon={true}
+          backgroundColor="#2e7d32"
+          size="small"
+        />
+      </div>
+      <div style={{marginRight: "20px"}}>
+        <Button
+          label="Button"
+          showIcon={true}
+          backgroundColor="#9c27b0"
+          size="small"
+        />
+      </div>
+      <div style={{marginRight: "20px"}}>
+        <Button
+          label="Button"
+          showIcon={true}
+          backgroundColor="#d32f2f"
+          size="small"
+        />
+      </div>
+    </div>    
+  </Story>
+</Canvas>
+
+<Preview>
+  <Story name="Playground" args={previewArgs}>
+    {(args) => <Button {...args} />}
+  </Story>
+</Preview>

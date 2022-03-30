@@ -7,38 +7,23 @@
   display: inline-flex;
   align-items: center;
   line-height: 1;
+  user-select: none;
 }
 .button:hover {
-  border: 2px solid green;
-  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+  border: 1px solid green;
+  box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.3);
 }
 
-.button--primary {
-  color: white;
-  background-color: #1976d2;
-}
-.button--secondary {
-  color: #333;
-  background-color: transparent;
-}
 .button--small {
-  font-size: 12px;
-  padding: 10px 16px;
+  font-size: 10px;
+  padding: 8px 12px;
 }
 .button--medium {
   font-size: 14px;
-  padding: 11px 20px;
+  padding: 10px 16px;
 }
 .button--large {
-  font-size: 16px;
-  padding: 12px 24px;
+  font-size: 18px;
+  padding: 12px 20px;
 }
-.icon--small {
-  font-size: 12px;
-}
-.icon--medium {
-  font-size: 14px;
-}
-.icon--large {
-  font-size: 16px;
-}
+
