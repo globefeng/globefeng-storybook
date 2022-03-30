@@ -1,21 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { CircularProgress } from '@mui/material';
 import './button.css';
 
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+export const Button = ({ primary, backgroundColor, size, label, onClick, ...props }) => {
   return (
-    <button
+    <div
+      role="button" tabIndex={0} onClick={onClick}
       type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
+      className={['storybook-button', `storybook-button--${size}`, primary ? 'storybook-button--primary' : 'storybook-button--secondary'].join(' ')}
       style={backgroundColor && { backgroundColor }}
       {...props}
     >
+      <CircularProgress size={18} color="inherit" style={{marginRight: '20px'}} />
       {label}
-    </button>
+    </div>
   );
 };
 
