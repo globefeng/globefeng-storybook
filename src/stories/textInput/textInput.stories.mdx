@@ -1,0 +1,105 @@
+import {
+  Description,
+  Meta,
+  Preview,
+  Props,
+  Story,
+  Title,
+} from '@storybook/addon-docs/blocks';
+
+import { TextInput } from '../../components/textInput/TextInput.jsx';
+
+export const previewArgs = {
+  hasError: true,
+  placeholder: 'Place Holder',
+};
+
+<Meta
+  component={TextInput}
+  title="Component/TextInput"
+/>
+
+<Title>TextInput</Title>
+
+<Description>
+  The component will render a button on the page.
+</Description>
+
+## Properties
+
+<Props of={TextInput} />
+
+## Preview
+
+Here's an example of the TextInput display. Go to the Canvas tab for a live preview.
+
+<Canvas>
+  <Story name="Overview">
+    <div style={{display: "flex", marginBottom: "20px"}}>
+      <div style={{marginRight: "20px"}}>
+        <TextInput
+          placeholder="First Name"
+          size="large"
+        />
+      </div>
+      <div style={{marginRight: "20px"}}>
+        <TextInput
+          placeholder="Last Name"
+          size="large"
+        />
+      </div>
+      <div style={{marginRight: "20px"}}>
+        <TextInput
+          hasError="true"
+          placeholder="Has Error"
+          size="large"
+        />
+      </div>
+    </div>
+    <div style={{display: "flex", marginBottom: "20px"}}>
+      <div style={{marginRight: "20px"}}>
+        <TextInput
+          placeholder="First Name"
+        />
+      </div>
+      <div style={{marginRight: "20px"}}>
+        <TextInput
+          placeholder="Last Name"
+        />
+      </div>
+      <div style={{marginRight: "20px"}}>
+        <TextInput
+          hasError="true"
+          placeholder="Has Error"
+        />
+      </div>
+    </div>
+    <div style={{display: "flex"}}>
+      <div style={{marginRight: "20px"}}>
+        <TextInput
+          placeholder="First Name"
+          size="small"
+        />
+      </div>
+      <div style={{marginRight: "20px"}}>
+        <TextInput
+          placeholder="Last Name"
+          size="small"
+        />
+      </div>
+      <div style={{marginRight: "20px"}}>
+        <TextInput
+          hasError="true"
+          placeholder="Has Error"
+          size="small"
+        />
+      </div>
+    </div>    
+  </Story>
+</Canvas>
+
+<Preview>
+  <Story name="Playground" args={previewArgs}>
+    {(args) => <TextInput {...args} />}
+  </Story>
+</Preview>
