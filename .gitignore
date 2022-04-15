@@ -6,7 +6,7 @@
 /.pnp
 .pnp.js
 .bundle.js
-.vs
+/.vs
 
 # testing
 /coverage
