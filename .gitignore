@@ -2,9 +2,11 @@
 
 # dependencies
 /node_modules
+/public-story
 /.pnp
 .pnp.js
 .bundle.js
+.vs
 
 # testing
 /coverage
