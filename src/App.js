@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext, useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { AppContext } from './context/appContext';
+import { AuthService } from './service/auth';
+import Header from './pages/headerFooter/index';
+import Footer from './pages/headerFooter/footer';
+import WindowWidth from "./pages/common/windowWidth";
+import { ThemeProvider } from "styled-components";
+import { themes } from "./pages/theme/themes"
+import { GlobalStyles } from './pages/theme/globalStyles';
+import HomeComponent from './pages/home/index';
+import ButtonPage from './pages/button/index';
 
-function App() {
+const AppComponent = () => {
+  const { CurrentTheme, dispatch } = useContext(AppContext);
+
+  useEffect(() => {
+    let userInfo = AuthService.getUserInfo();
+    if (userInfo) {
+      dispatch({type:'LOGIN', data:userInfo});
+    }
+    const themeValue = window.localStorage.getItem("MyTheme");
+    if (themeValue) {
+      dispatch({type: 'SET_THEME', data: themeValue});
+    }
+  }, [dispatch])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Homepage for deploy from github to heroku
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <ThemeProvider theme={themes[CurrentTheme]}>
+        <GlobalStyles />
+        <Header />
+        <Switch>
+          <Route exact path="/" component={HomeComponent} />
+          <Route path="/button" component={ButtonPage} />
+          <Route render={() => <Redirect to="/" />} />
+        </Switch>
+        <Footer />
+        <WindowWidth />
+      </ThemeProvider>
+    </Router>
   );
 }
 
-export default App;
+export default AppComponent;
+
