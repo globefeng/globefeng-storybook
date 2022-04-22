@@ -10,6 +10,7 @@ import { themes } from "./pages/theme/themes"
 import { GlobalStyles } from './pages/theme/globalStyles';
 import HomeComponent from './pages/home/index';
 import ButtonPage from './pages/button/index';
+import RotationPage from './pages/animation/rotation';
 
 const AppComponent = () => {
   const { CurrentTheme, dispatch } = useContext(AppContext);
@@ -33,6 +34,7 @@ const AppComponent = () => {
         <Switch>
           <Route exact path="/" component={HomeComponent} />
           <Route path="/button" component={ButtonPage} />
+          <Route path="/rotation" component={RotationPage} />
           <Route render={() => <Redirect to="/" />} />
         </Switch>
         <Footer />

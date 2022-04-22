@@ -1,0 +1,63 @@
+import {
+  Description,
+  Meta,
+  Preview,
+  Props,
+  Story,
+  Title,
+} from '@storybook/addon-docs/blocks';
+
+import { Rotation } from '../../components/rotation/index';
+
+export const previewArgs = {
+  speed: '6s',
+};
+
+<Meta
+  component={Rotation}
+  title="Component/Animation/Rotation"
+/>
+
+<Title>Rotation</Title>
+
+<Description>
+  The component will render a Rotation on the page.
+</Description>
+
+## Properties
+
+<Props of={Rotation} />
+
+## Preview
+
+Here's an example of the Rotation display. Go to the Canvas tab for a live preview.
+
+<Canvas>
+  <Story name="Overview">
+    <div style={{display: "flex", marginBottom: "20px"}}>
+      <div style={{margin: "60px"}}>
+        <Rotation speed="6s">
+            <div style={{backgroundColor: 'lightblue', border: '2px solid red', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '10px'}}>
+              <span>This element is rotating</span>
+              <img src="https://www.amnh.org/var/ezflow_site/storage/images/media/amnh/images/explore/ology-images/earth/what-s-the-big-idea-about-earth/earth-icon/4690373-1-eng-US/earth-icon.png" style={{width:'100px', height:'100px'}} />
+            </div>           
+        </Rotation>
+      </div>
+    </div>  
+  </Story>
+</Canvas>
+
+<Preview>
+  <Story name="Playground" args={previewArgs}>
+    {(args) =>
+      <div style={{margin: "60px"}}>
+        <Rotation {...args}>
+                <div style={{backgroundColor: 'lightblue', border: '2px solid red', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '10px'}}>
+                  <span>This element is rotating</span>
+                  <img src="https://www.amnh.org/var/ezflow_site/storage/images/media/amnh/images/explore/ology-images/earth/what-s-the-big-idea-about-earth/earth-icon/4690373-1-eng-US/earth-icon.png" style={{width:'100px', height:'100px'}} />
+                </div>     
+        </Rotation>
+      </div>
+    }
+  </Story>
+</Preview>
