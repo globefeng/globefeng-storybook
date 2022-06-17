@@ -5,7 +5,8 @@ const TestMenus = [
   },
   {
     name: "Atomic",
-    submenus: [ {name: 'Button', link:'/button'},                
+    submenus: [ {name: 'Button', link:'/button'},
+                {name: 'Tree', link:'/tree'},                
                 {name: 'TextInput', link:'/textinput'},              
               ]
   },

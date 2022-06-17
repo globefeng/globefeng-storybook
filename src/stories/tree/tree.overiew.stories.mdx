@@ -1,0 +1,94 @@
+import {
+  Description,
+  Meta,
+  Preview,
+  Props,
+  Story,
+  Title,
+} from '@storybook/addon-docs/blocks';
+
+import Tree from '../../components/tree/tree.js';
+
+export const previewArgs = {
+  data: [    
+    {
+      id: 0,
+      path: 'Root',
+      type: 'folder',
+      isRoot: true,
+      children: [1, 2],
+    },
+    {
+      id: 1,
+      path: 'Folder 1',
+      type: 'folder',
+      children: [3, 4],
+    },
+    {
+      id: 2,
+      path: 'Folder 2',
+      type: 'file',
+      children: [5, 6],
+    },
+    {
+      id: 3,
+      path: 'Subfolder 1',
+      type: 'folder',
+      children: [],
+    },
+    {
+      id: 4,
+      path: 'Subfolder 2',
+      type: 'folder',
+      children: [],
+    },
+    {
+      id: 5,
+      path: 'Subfolder 1',
+      type: 'folder',
+      children: [],
+    },
+    {
+      id: 6,
+      path: 'Subfolder 2',
+      type: 'folder',
+      children: [],
+    },
+  ],
+};
+
+<Meta
+  component={Tree}
+  title="Component/Tree"
+/>
+
+<Title>Tree</Title>
+
+<Description>
+  The component will render a Tree on the page.
+</Description>
+
+## Properties
+
+<Props of={Tree} />
+
+## Preview
+
+Here's an example of the Tree display. Go to the Canvas tab for a live preview.
+
+<Canvas>
+  <Story name="Overview">
+    <div style={{display: "flex", marginBottom: "20px"}}>
+      <div style={{marginRight: "20px"}}>
+        <Tree {...previewArgs} />
+      </div>
+    </div>
+    
+  </Story>
+</Canvas>
+
+<Preview>
+  <Story name="Playground" args={previewArgs}>
+    {(args) => <Tree {...args} />}
+  </Story>
+</Preview>

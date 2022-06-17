@@ -10,7 +10,7 @@ const AppContextProvider = ({children}) => {
               count: 1,
               CurrentUser: null,
               Token: null,
-              windowWidth: 300,
+              windowWidth: 1200,
               CurrentTheme: 'light',
       };
   });

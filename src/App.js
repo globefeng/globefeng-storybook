@@ -4,13 +4,14 @@ import { AppContext } from './context/appContext';
 import { AuthService } from './service/auth';
 import Header from './pages/headerFooter/index';
 import Footer from './pages/headerFooter/footer';
-import WindowWidth from "./pages/common/windowWidth";
+// import WindowWidth from "./pages/common/windowWidth";
 import { ThemeProvider } from "styled-components";
 import { themes } from "./pages/theme/themes"
 import { GlobalStyles } from './pages/theme/globalStyles';
 import HomeComponent from './pages/home/index';
 import ButtonPage from './pages/button/index';
 import RotationPage from './pages/animation/rotation';
+import TreePage from './pages/tree';
 
 const AppComponent = () => {
   const { CurrentTheme, dispatch } = useContext(AppContext);
@@ -35,10 +36,11 @@ const AppComponent = () => {
           <Route exact path="/" component={HomeComponent} />
           <Route path="/button" component={ButtonPage} />
           <Route path="/rotation" component={RotationPage} />
+          <Route path="/tree" component={TreePage} />
           <Route render={() => <Redirect to="/" />} />
         </Switch>
         <Footer />
-        <WindowWidth />
+        {/* <WindowWidth /> */}
       </ThemeProvider>
     </Router>
   );
