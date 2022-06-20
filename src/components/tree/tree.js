@@ -93,6 +93,19 @@ const Tree = ({data}) => {
     })
   }
 
+  const onUpdateNode = (text) => {
+    setTreeData(prevState => {
+      let newData = prevState.slice();
+      var selectedNode = newData.find(p => p.id === editNode.id);
+      console.log(selectedNode);
+      if (selectedNode) {
+        selectedNode.path = text;
+        console.log(selectedNode);
+      }
+      return newData
+    })
+    setEditNode(null);
+  }
 
   var root = treeData.find(p => p.isRoot === true);
 
@@ -100,7 +113,7 @@ const Tree = ({data}) => {
     <div>
       <TreeNode node={root} data={data} level={0} getChildNodes={getChildNodes} toggleNode={toggleNode} onMenuClicked={onMenuClicked} onNodeChecked={onNodeChecked} />
 
-      <EditDialog node={editNode} onClose={() => setEditNode(null)} />
+      <EditDialog node={editNode} onClose={() => setEditNode(null)} onSave={onUpdateNode} />
       <DeleteDialog node={deleteNode} onCancel={() => setDeleteNode(null)} onOk={() => { setDeleteNode(null); onNodeDelete(deleteNode); }} />
       
     </div>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Dialog, DialogTitle, DialogContent, Button, DialogActions } from '@material-ui/core';
 import TextField from '@mui/material/TextField';
 
-const EditDialog = ({node, onClose}) => {
+const EditDialog = ({node, onClose, onSave}) => {
     const [text, setText] = useState('');
 
     useEffect(() => {
@@ -30,7 +30,8 @@ const EditDialog = ({node, onClose}) => {
             </DialogContent>
             <DialogActions>
                 <Button onClick={onClose}>Cancel</Button>
-                <Button onClick={onClose}>Ok</Button>
+                {text.length > 0 && <Button onClick={() => onSave(text)}>Save</Button>}
+                {text.length == 0 && <Button disabled>Save</Button>}
             </DialogActions>
         </Dialog>
     )
@@ -39,6 +40,7 @@ const EditDialog = ({node, onClose}) => {
 EditDialog.propTypes = {
     node: PropTypes.shape(),
     onClose: PropTypes.func,
+    onSave: PropTypes.func
   };
   
 export default EditDialog;
