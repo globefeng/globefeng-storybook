@@ -29,6 +29,7 @@ color: ${menuColor};
 `;
 
 const DropdownMenu = Styled.div`
+cursor: pointer;
 padding: 10px 20px;
 color: ${menuColor};
 &:hover {

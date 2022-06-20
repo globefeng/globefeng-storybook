@@ -8,44 +8,95 @@ const data = [
       path: 'Root',
       type: 'folder',
       isRoot: true,
-      children: [1, 2],
+      children: [1, 6],
     },
     {
       id: 1,
-      path: 'Child 1',
+      path: 'Books',
       type: 'folder',
-      children: [3, 4],
+      checked: true,
+      menus: [
+        {
+          name: "Add new book"
+        },
+        {
+          name: "Delete"
+        },
+      ],
+      children: [2, 3, 4, 5],
     },
     {
       id: 2,
-      path: 'Child 2',
-      type: 'file',
-      children: [5, 6],
+      path: 'React Tutorial',
+      type: 'folder',
+      checked: true,
+      children: [],
     },
     {
       id: 3,
-      path: 'Son 1',
+      path: 'SQL Step By Step',
       type: 'folder',
+      checked: false,
       children: [],
     },
     {
       id: 4,
-      path: 'Son 2',
+      path: 'Hacking with React',
       type: 'folder',
+      checked: false,
       children: [],
     },
     {
       id: 5,
-      path: 'Daughter 1',
+      path: 'Java for Beginner',
       type: 'folder',
+      checked: true,
       children: [],
     },
     {
       id: 6,
-      path: 'Daughter 2',
+      path: 'Movies',
       type: 'folder',
+      checked: true,
+      menus: [
+        {
+          name: "Add new movie"
+        },
+        {
+          name: "Delete"
+        },
+      ],
+      children: [7, 8, 9, 10],
+    },
+    {
+      id: 7,
+      path: 'The Godfather',
+      type: 'folder',
+      checked: true,
       children: [],
     },
+    {
+      id: 8,
+      path: 'The Lord of the Rings: The Return of the King',
+      type: 'folder',
+      checked: false,
+      children: [],
+    },
+    {
+      id: 9,
+      path: 'The Matrix',
+      type: 'folder',
+      checked: true,
+      children: [],
+    },
+    {
+      id: 10,
+      path: 'Star Wars',
+      type: 'folder',
+      checked: false,
+      children: [],
+    },
+
   ];
 
 const TreePage = () => {
