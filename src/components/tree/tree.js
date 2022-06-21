@@ -130,8 +130,44 @@ const Tree = ({data}) => {
 
   var root = treeData.find(p => p.isRoot === true);
 
+  const FlatNodes = (node, data) => {
+    var nodes = [];
+    if (node && node.children && node.children.length > 0) {
+      node.children.forEach(id => {
+        var found = data.find(p => p.id === id);
+        if (found) {
+          nodes.push(found);
+        }
+      })
+    }
+    node.nodes = nodes;
+    
+    if (node && node.children && node.children.length > 0) {
+      node.children.forEach(id => {
+        var found = data.find(p => p.id === id);
+        if (found) {
+          FlatNodes(found, data);
+        }
+      })
+    }
+
+    delete node.children;
+    delete node.id;
+    delete node.menus;
+  }
+
+  const SaveData = () => {
+    const data = JSON.parse(JSON.stringify(treeData))
+    var root = data.find(p => p.isRoot === true);
+    if (root) {
+      FlatNodes(root, data);
+    }    
+    console.log(JSON.stringify(root));
+  }
+
   return (
     <div>
+      <button onClick={SaveData}>Get Data</button>
       <TreeNode node={root} data={data} level={0} getChildNodes={getChildNodes} toggleNode={toggleNode} onMenuClicked={onMenuClicked} onNodeChecked={onNodeChecked} />
 
       <AddDialog node={addNode} onClose={() => setAddNode(null)} onAdd={onAddNode} />
