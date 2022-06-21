@@ -93,7 +93,7 @@ const TreeNode = (props) => {
               <Fragment>
                 <StyledIcon isOpen={isOpen()}><img alt='' src={RightIcon} width='12' height='12' onClick={(e) => { e.stopPropagation(); toggleNode(node)}} /></StyledIcon>
                 <input type="checkbox" style={{width: '18px', height: '18px'}} onChange={onChecked} checked={node.checked} />
-                <span style={{marginLeft:'4px'}} onClick={(e) => { onTreeClick(e)}}>{node.path}</span>
+                <span style={{marginLeft:'4px'}} onClick={onTreeClick} onContextMenu={onTreeClick}>{node.path}</span>
               </Fragment>
             }
             {!hasChildren() && 

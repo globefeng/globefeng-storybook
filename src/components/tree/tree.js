@@ -2,11 +2,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import TreeNode from './treeNode';
+import AddDialog from './dialog/addDialog';
 import EditDialog from './dialog/editDialog';
 import DeleteDialog from './dialog/deleteDialog';
 
 const Tree = ({data}) => {
   const [treeData, setTreeData] = useState(data)
+  const [addNode, setAddNode] = useState(null)
   const [editNode, setEditNode] = useState(null)
   const [deleteNode, setDeleteNode] = useState(null)
   
@@ -32,7 +34,10 @@ const Tree = ({data}) => {
   };
 
   const onMenuClicked =(node, action) => {
-    if (action === "Edit") {
+    if (action === "Add") {
+      setAddNode(node);
+    }
+    else if (action === "Edit") {
       setEditNode(node);
     }
     else if (action === "Delete") {
@@ -97,14 +102,30 @@ const Tree = ({data}) => {
     setTreeData(prevState => {
       let newData = prevState.slice();
       var selectedNode = newData.find(p => p.id === editNode.id);
-      console.log(selectedNode);
       if (selectedNode) {
         selectedNode.path = text;
-        console.log(selectedNode);
       }
       return newData
     })
     setEditNode(null);
+  }
+
+  const onAddNode = (text) => {
+    setTreeData(prevState => {
+      let newData = prevState.slice();
+      var selectedNode = newData.find(p => p.id === addNode.id);
+      if (selectedNode) {
+        let max = 0;
+        newData.forEach(item => max = item.id > max ? item.id : max);
+        max++;
+  
+        newData.push({id: max, path: text, isOpen: true, children: []});
+        selectedNode.children.push(max);
+        selectedNode.isOpen = true;
+      }
+      return newData
+    })
+    setAddNode(null);
   }
 
   var root = treeData.find(p => p.isRoot === true);
@@ -113,6 +134,7 @@ const Tree = ({data}) => {
     <div>
       <TreeNode node={root} data={data} level={0} getChildNodes={getChildNodes} toggleNode={toggleNode} onMenuClicked={onMenuClicked} onNodeChecked={onNodeChecked} />
 
+      <AddDialog node={addNode} onClose={() => setAddNode(null)} onAdd={onAddNode} />
       <EditDialog node={editNode} onClose={() => setEditNode(null)} onSave={onUpdateNode} />
       <DeleteDialog node={deleteNode} onCancel={() => setDeleteNode(null)} onOk={() => { setDeleteNode(null); onNodeDelete(deleteNode); }} />
       
