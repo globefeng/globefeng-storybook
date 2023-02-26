@@ -24,7 +24,7 @@
     "yup": "^0.29.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "build-storybook --output-dir public-story & start-storybook -p 6006 -s public-story",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
